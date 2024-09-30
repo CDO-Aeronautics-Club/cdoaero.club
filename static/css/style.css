@@ -198,3 +198,15 @@ li::marker {
     max-width: 500px;
     max-height: 150px;
 }
+
+.construction {
+    position: absolute;
+    top: calc(50% - 128px + 32px + 16px);
+    left: calc(50% - 128px);
+
+    transition: all 0.5s ease-in-out;
+}
+
+.construction:hover {
+    rotate: 360deg;
+}

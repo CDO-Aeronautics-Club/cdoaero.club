@@ -1,9 +1,18 @@
+import os
+
+ENV_SERVER = os.path.exists("/root/cdoaero.club")
+
 import flask as fl
-from . import html_proc
-# import html_proc
+
+if ENV_SERVER:
+    from . import html_proc
+
+else:
+    import html_proc
 
 app = fl.Flask(__name__)
-html = html_proc.HTMLpreproc(preproc_dir = f"{app.root_path}/preproc", flask_features = True)
+
+html = html_proc.HTMLpreproc(preproc_dir = f"{app.root_path}/preproc", flask_features = True, live_reload = not ENV_SERVER)
 
 @app.route("/favicon.ico")
 def favicon():
