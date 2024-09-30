@@ -1,5 +1,5 @@
 import flask as fl
-import html_proc
+from . import html_proc
 
 app = fl.Flask(__name__)
 html = html_proc.HTMLpreproc(live_reload = True, flask_features = True)
