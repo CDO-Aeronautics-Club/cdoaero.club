@@ -12,6 +12,14 @@ else:
 
 app = fl.Flask(__name__)
 
+if ENV_SERVER:
+    with open("/root/cdoaero.club/secret", "r") as f:
+        app.secret_key = f.read()
+
+else:
+    with open(f"{app.root_path}/secret", "r") as f:
+        app.secret_key = f.read()
+
 html = html_proc.HTMLpreproc(preproc_dir = f"{app.root_path}/preproc", flask_features = True, live_reload = not ENV_SERVER)
 
 @app.route("/favicon.ico")
